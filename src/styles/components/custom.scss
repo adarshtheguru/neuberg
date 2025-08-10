@@ -53,6 +53,9 @@ header{
     .bannerFloat{
         img{
             max-width: 800px;
+            @media ($max1440) and ($min1025) {
+                max-width: 600px;
+            }
         }
     }
     .stamp{

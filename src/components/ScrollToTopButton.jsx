@@ -25,7 +25,7 @@ export default function ScrollToTopButton() {
     show && (
       <button
         onClick={scrollToTop}
-        className="fixed bottom-[80px] md:right-6 right-3 transition-opacity z-9"
+        className="fixed bottom-[80px] md:right-6 right-3 transition-opacity z-9 cursor-pointer"
         aria-label="Scroll to top"
       >
         {/* Example SVG (Up Arrow) */}

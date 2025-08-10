@@ -1,44 +1,7 @@
 import { assetUrl } from "../utils/helpers";
 import Slider from "react-slick";
-import { useRef, useState, useEffect } from "react";
 
 export default function Testimonials() {
-  const sliderRef = useRef(null);
-  const [slidesToShow, setSlidesToShow] = useState(3);
-  const [dotsStatus, setDotsStatus] = useState(false);
-  const [arrowStatus, setArrowStatus] = useState(true);
-
-  // Detect device width and set slides count
-  useEffect(() => {
-    const updateSlides = () => {
-      const width = window.innerWidth;
-      if (width <= 767) {
-        // iPhone
-        setSlidesToShow(1);
-        setDotsStatus(true);
-        setArrowStatus(false);
-      } else if (width <= 992) {
-        // iPad
-        setSlidesToShow(1);
-        setDotsStatus(true);
-        setArrowStatus(false);
-      } else if (width <= 1024) {
-        // Small laptop
-        setSlidesToShow(2);
-        setDotsStatus(true);
-        setArrowStatus(false);
-      } else {
-        // Desktop
-        setSlidesToShow(3);
-        setDotsStatus(false);
-        setArrowStatus(true);
-      }
-    };
-
-    updateSlides(); // Run on mount
-    window.addEventListener("resize", updateSlides);
-    return () => window.removeEventListener("resize", updateSlides);
-  }, []);
   const images = [
     "images/test1.png",
     "images/test2.png",
@@ -56,8 +19,16 @@ export default function Testimonials() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: slidesToShow, // Only 1 "layout" per slide
+    slidesToShow: 1, // Only 1 "layout" per slide
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768, // Mobile
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (

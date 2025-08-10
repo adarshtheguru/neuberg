@@ -1,5 +1,9 @@
 import { assetUrl } from "../utils/helpers";
+import { scrollToWithAnimation } from "../utils/helpers";
 export default function Accreditations() {
+    const handleClick = () => {
+        scrollToWithAnimation("home", 0, "", 1000);
+      };
   return (
     <section id="accreditations" className="md:pt-[150px] pt-[120px] accreditations relative grid">
         <img className="xl:block hidden absolute bottom-0 left-0" src={assetUrl('images/dhoniWithMan.png')} alt="" />
@@ -10,7 +14,7 @@ export default function Accreditations() {
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
             </p>
             <div className="flex gap-4 xl:justify-start justify-center">
-                <a href="javascript:;" className="themeBtn">
+                <a onClick={handleClick} href="javascript:;" className="themeBtn">
                     Enquire Now
                     <img className="md:block hidden" src={assetUrl('images/whiteArrow.svg')} alt="" />
                 </a>

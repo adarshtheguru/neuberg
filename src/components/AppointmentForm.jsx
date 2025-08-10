@@ -117,7 +117,13 @@ export function AppointmentForm() {
             name="service"
             value={form.service}
             onChange={handleChange}
-            className={`w-full border ${
+            style={{
+              backgroundColor: "#fff",
+              WebkitAppearance: "none",
+              MozAppearance: "none",
+              appearance: "none",
+            }}
+            className={`w-full border appearance-none ${
               errors.service ? "border-red-500" : "border-gray-200"
             } rounded-md px-3 py-2 bg-white`}
           >
@@ -178,7 +184,7 @@ export function AppointmentForm() {
 
         <button
           type="submit"
-          className="mt-4 w-fit rounded-[100px] py-2 px-4 text-white font-medium"
+          className="mt-4 w-fit rounded-[100px] py-2 px-4 text-white font-medium cursor-pointer"
           style={{
             background:
               "linear-gradient(90deg, #F7941D -18.22%, #5C2D91 100%)",
