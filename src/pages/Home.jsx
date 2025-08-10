@@ -7,6 +7,7 @@ import TrustNeuberg from "../components/TrustNeuberg";
 import Location from "../components/Location";
 import Accreditations from "../components/Accreditations";
 import ScrollToTopButton from "../components/ScrollToTopButton";
+import FloatingCTA from "../components/FloatingCTA";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Accreditations />
       <FAQ />
       <ScrollToTopButton />
+      <FloatingCTA />
     </>
   );
 }

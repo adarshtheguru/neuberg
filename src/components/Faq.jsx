@@ -31,7 +31,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="pt-[80px] pb-[120px] faq">
+    <section id="faq" className="md:pt-[80px] md:pb-[120px] py-[70px] faq">
       <div className="container mx-auto px-4">
         {/* Title */}
         <h2 className="secTitle font-bold text-center mb-8">
@@ -48,7 +48,7 @@ export default function FAQ() {
             >
                 {/* Question */}
                 <div className={`flex justify-between items-center px-4 pt-4 pb-2 ${openIndex === index ? "question" : ""}`}>
-                    <h3 className="text-lg">{item.question}</h3>
+                    <h3 className="md:text[16px] text-[14px]">{item.question}</h3>
 
                     {/* Rounded Icon */}
                     <span
@@ -64,7 +64,7 @@ export default function FAQ() {
 
                 {/* Answer */}
                 {openIndex === index && (
-                <p className="mt-2 text-gray-600 px-4 pb-4">{item.answer}</p>
+                <p className="mt-2 text-gray-600 px-4 pb-4 md:text[16px] text-[14px]">{item.answer}</p>
                 )}
             </div>
             ))}

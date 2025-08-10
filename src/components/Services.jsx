@@ -1,24 +1,59 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { assetUrl } from "../utils/helpers";
 import Slider from "react-slick";
+import { scrollToWithAnimation } from "../utils/helpers";
 
 export default function Services() {
-    const sliderRef = useRef(null);
+  const sliderRef = useRef(null);
+  const [slidesToShow, setSlidesToShow] = useState(3);
+  const [dotsStatus, setDotsStatus] = useState(false);
+  const [arrowStatus, setArrowStatus] = useState(true);
 
-  // Slick settings
+  const handleClick = () => {
+      scrollToWithAnimation("formBox", -200, "shake", 1000);
+    };
+
+  // Detect device width and set slides count
+  useEffect(() => {
+    const updateSlides = () => {
+      const width = window.innerWidth;
+      if (width <= 767) {
+        // iPhone
+        setSlidesToShow(1);
+        setDotsStatus(true);
+        setArrowStatus(false);
+      } else if (width <= 992) {
+        // iPad
+        setSlidesToShow(1);
+        setDotsStatus(true);
+        setArrowStatus(false);
+      } else if (width <= 1024) {
+        // Small laptop
+        setSlidesToShow(2);
+        setDotsStatus(true);
+        setArrowStatus(false);
+      } else {
+        // Desktop
+        setSlidesToShow(3);
+        setDotsStatus(false);
+        setArrowStatus(true);
+      }
+    };
+
+    updateSlides(); // Run on mount
+    window.addEventListener("resize", updateSlides);
+    return () => window.removeEventListener("resize", updateSlides);
+  }, []);
+
   const settings = {
-    arrows: false, // Disable default slick arrows
-    dots: false,
+    arrows: arrowStatus,
+    dots: dotsStatus,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
-    autoplay:true,
+    // autoplay:true,
     autoplaySpeed: 3000,
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 640, settings: { slidesToShow: 1 } }
-    ]
   };
 
   // Example slider items with listData
@@ -74,37 +109,41 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="pt-[200px] pb-[150px] z-1 services relative">
+    <section id="services" className="md:pt-[200px] md:pb-[150px] md:text-left pt-[90px] pb-[90px] z-1 services relative">
       <div className="container mx-auto px-4 relative">
         <img src={assetUrl('images/thumb.png')} alt="" className="absolute top-[-75px] left-[-40px] z-2" />
-        <h2 className="secTitle text-black font-bold pb-2 relative z-3">
-          Precision Scans. Proven Speed. <br /> Personalized Reporting.
+        <h2 className="secTitle text-black font-bold pb-2 relative z-3 xl:text-left text-center">
+          Precision Scans. Proven Speed. <br className=" md:block hidden" /> Personalized Reporting.
         </h2>
         <div className="flex place-content-between">
           <p className="fadeBlack font-medium">
             Chennais top-rated radiology centre - trusted for fast, accurate
             diagnosis using the latest global technology.
           </p>
-          <div className="customArrow flex gap-2">
-            <div
-              id="servLeft"
-              onClick={() => sliderRef.current?.slickPrev()}
-              className="cursor-pointer"
-            >
-              <img src={assetUrl("images/left.svg")} alt="Prev" />
-            </div>
-            <div
-              id="servRight"
-              onClick={() => sliderRef.current?.slickNext()}
-              className="cursor-pointer"
-            >
-              <img src={assetUrl("images/right.svg")} alt="Next" />
-            </div>
-          </div>
+          {
+            arrowStatus && (
+              <div className="customArrow flex gap-2">
+                <div
+                  id="servLeft"
+                  onClick={() => sliderRef.current?.slickPrev()}
+                  className="cursor-pointer"
+                >
+                  <img src={assetUrl("images/left.svg")} alt="Prev" />
+                </div>
+                <div
+                  id="servRight"
+                  onClick={() => sliderRef.current?.slickNext()}
+                  className="cursor-pointer"
+                >
+                  <img src={assetUrl("images/right.svg")} alt="Next" />
+                </div>
+              </div>
+            )
+          }
         </div>
 
         {/* Slider */}
-        <div className="mt-10 servicesSliderWrapper">
+        <div className="mt-10 servicesSliderWrapper w-full">
           <Slider ref={sliderRef} {...settings}>
             {slides.map((slide) => (
               <div key={slide.id} className="px-2">
@@ -126,7 +165,7 @@ export default function Services() {
                         </li>
                       ))}
                     </ul>
-                    <a href="javascript:;" className="themeBtn text-center w-full block">
+                    <a href="javascript:;" className="themeBtn text-center w-full block" data-title={slide.title} onClick={handleClick}>
                       Book {slide.title} Now
                     </a>
                   </div>

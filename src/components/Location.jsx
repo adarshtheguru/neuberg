@@ -6,8 +6,8 @@ export default function Location() {
 
   useEffect(() => {
     const updateBg = () => {
-      if (window.innerWidth < 768) {
-        setBgImage(assetUrl("images/location-mobile.jpg"));
+      if (window.innerWidth < 1025) {
+        setBgImage(assetUrl("images/locationMob.png"));
       } else {
         setBgImage(assetUrl("images/locationBgDesk.jpg"));
       }
@@ -22,16 +22,16 @@ export default function Location() {
   return (
     <section
       id="location"
-      className="location relative h-[710px]"
+      className="location relative xl:h-[710px]"
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="container mx-auto px-4 w-[80%] h-full relative grid items-center">
+      <div className="xl:container mx-auto xl:px-4 xl:w-[80%] w-full h-full relative xl:grid items-center">
         {/* Content */}
-        <div className="locData w-[35%]">
+        <div className="locData xl:w-[35%] w-full xl:px-0 xl:py-0 xl:pt-0 px-4 py-4 pt-[30px]">
             <img src={assetUrl('images/logo.png')} alt="" />
             <div className="addWrapper grid gap-4">
                 <p className="font-bold fadeBlack">Neuberg Diagnostics, Chennai</p>
@@ -49,6 +49,9 @@ export default function Location() {
                 </div>
             </div>
             <a href="javascript:;" className="block themeBtn mt-4 w-fit">Get Direction</a>
+        </div>
+        <div className="block xl:hidden m-[-2px]">
+          <img className="w-full" src={bgImage} alt="" />
         </div>
       </div>
     </section>

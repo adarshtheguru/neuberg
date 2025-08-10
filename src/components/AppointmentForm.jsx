@@ -62,10 +62,11 @@ export function AppointmentForm() {
 
   return (
     <form
+      id="formBox"
       onSubmit={handleSubmit}
-      className="w-full max-w-[600px] bg-white rounded-[12px] shadow-md py-8 pl-[40px] pr-[60px] text-[#1C1C1C] text-[14px]"
+      className="w-full xl:max-w-[600px] bg-white rounded-[12px] shadow-md py-8 md:pl-[40px] md:pr-[60px] px-[10px] text-[#1C1C1C] text-[14px]"
     >
-      <h3 className="text-xl font-semibold mb-4">Book An Appointment Now</h3>
+      <h3 className="text-xl font-semibold mb-4 md:text-[32px] text-[22px]">Book An Appointment Now</h3>
 
       <div className="flex flex-col gap-6">
         {/* Name */}
