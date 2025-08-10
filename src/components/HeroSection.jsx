@@ -20,7 +20,7 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 bannerFloat imgResponsive">
+      <div className="absolute bottom-0 right-0 bannerFloat imgResponsive ">
         <img src={assetUrl("images/dhoni.png")} alt="" />
       </div>
     </section>
