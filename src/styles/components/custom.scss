@@ -110,6 +110,46 @@ header{
     }
 }
 
+.benefits{
+    background: linear-gradient(169.43deg, #E8FFFF 7.86%, #D8D4FF 50.84%, #FFE0F9 99.69%);
+    .boxWrapper{
+        .box{
+            border-radius: 12px;
+            border: 1px solid #D0C9E3;
+            min-height: 237px;
+            .info{
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.accreditations{
+    background-color: #261145;
+    .themeBtn{
+        padding: 0 25px;
+        min-width: 225px;
+        min-height: 52px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        &.green{
+            background: #1D902E;
+            line-height: normal;
+            .wa{
+                :first-child{
+                    font-size: 14px;
+                }
+                :last-child{
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
 .faq{
     .faqWrapper{
         width: 80%;
@@ -121,4 +161,7 @@ header{
             }
         }
     }
+}
+footer{
+    background-color: #1A0B2A;
 }
