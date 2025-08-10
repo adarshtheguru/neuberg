@@ -44,7 +44,7 @@ export default function Header() {
     { label: "Benefits", target: "benefits" },
     { label: "Testimonials", target: "testimonials" },
     { label: "Accreditations", target: "accreditations" },
-    { label: "Contact", target: "contact" },
+    { label: "FAQs", target: "faq" },
   ];
 
   return (

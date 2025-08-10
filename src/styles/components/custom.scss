@@ -45,4 +45,80 @@ header{
         padding-bottom: 70px;
         line-height: normal;
     }
+    .detailWrap{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0 20px;
+        margin-bottom: -70px;
+        .box{
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 5px 4px 17px 0px #0000001F;
+            padding: 35px 50px;
+            display: flex;
+            gap: 0 50px;
+            .data{
+                .title{
+                    font-size: 21px;
+                    padding-bottom: 13px;
+                }
+                .info{
+                    color: #1C1C1C;
+                }
+            }
+        }
+    }
+}
+.services{
+    background-color: #FFF6EC;
+    .servicesSliderWrapper{
+        .slick-current{
+            .box{
+                box-shadow: 5px 4px 17px 0px #0000001F;
+                .themeBtn{
+                    border: 1px solid transparent;
+                    background: linear-gradient(90deg, #F7941D -18.22%, #5C2D91 100%);
+                    color: #fff;
+                }
+            }
+        }
+        .box{
+            .content{
+                padding: 25px;
+                .upperData{
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.3);
+                    &.title{
+                        font-size: 24px;
+                    }
+                }
+                    ul{
+                        height: 130px;
+                        overflow-y: scroll;
+                        margin-bottom: 30px;
+                        li{
+                            margin-bottom: 5px;
+                        }
+                    }
+            }
+            .themeBtn{
+                border: 1px solid #000;
+                color: #000;
+                background: #fff;
+            }
+        }
+    }
+}
+
+.faq{
+    .faqWrapper{
+        width: 80%;
+        .faqElement{
+            border-radius: 12px;
+            border: 1px solid #C8C1DB;
+            .question{
+                background-color: #EEEDF5;
+            }
+        }
+    }
 }

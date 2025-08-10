@@ -13,6 +13,35 @@ export default function TrustNeuberg() {
                 <img src={assetUrl('images/icon5.svg')} alt="" />
             </div>
             <div className="text-center text-white secTitle pb-[60px]">Thousands Trust Neuberg for <br /> Radiology & Pathology</div>
+            <div className="detailWrap relative z-2">
+                <div className="box">
+                    <img src={assetUrl('images/ic.svg')} alt="" />
+                    <div className="data">
+                        <div className="title mavenPro font-bold">Integrated Centre</div>
+                        <p className="info font-medium">
+                            One-stop for radiology, pathology, and genomics
+                        </p>
+                    </div>
+                </div>
+                <div className="box">
+                    <img src={assetUrl('images/machine.svg')} alt="" />
+                    <div className="data">
+                        <div className="title mavenPro font-bold">HD Imaging Machines</div>
+                        <p className="info font-medium">
+                            1.5T MRI, 500-slice CT, Digital X-ray, Ultrasound & more
+                        </p>
+                    </div>
+                </div>
+                <div className="box">
+                    <img src={assetUrl('images/accuracy.svg')} alt="" />
+                    <div className="data">
+                        <div className="title mavenPro font-bold">Speed + Accuracy</div>
+                        <p className="info font-medium">
+                            Same-day reporting with expert radiologists
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
   );
