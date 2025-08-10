@@ -1,0 +1,48 @@
+header{
+    .logo{
+        max-width: 180px;
+        height: auto;
+    }
+    .customNav{
+        display: flex;
+        gap: 25px;
+        a{
+            font-size: 16px;
+            margin: 0;
+            color: #000000;
+            &.active{
+                font-weight: 700;
+                color: #46226D;
+                padding-bottom: 5px;
+                border-bottom: 3px solid #F7941D;
+            }
+        }
+    }
+}
+.heroWrap{
+    background: linear-gradient(169.43deg, #E8FFFF 7.86%, #D8D4FF 50.84%, #FFE0F9 99.69%);
+    .bannerPref{
+        font-family: Maven Pro;
+        font-size: 40px;
+        line-height: 100%;
+    }
+    .bannerFloat{
+        img{
+            max-width: 800px;
+        }
+    }
+    .stamp{
+        top: -70px;
+        right: -220px;
+    }
+}
+.whyNeuberg{
+    background-color: #261145;
+    .iconWrap{
+        display: flex;
+        gap: 65px;
+        justify-content: center;
+        padding-bottom: 70px;
+        line-height: normal;
+    }
+}
