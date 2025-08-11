@@ -52,61 +52,104 @@ export default function Services() {
     speed: 500,
     slidesToShow: slidesToShow,
     slidesToScroll: 1,
-    // autoplay:true,
+    autoplay:true,
     autoplaySpeed: 3000,
   };
 
   // Example slider items with listData
   const slides = [
-    {
-      id: 1,
-      img: assetUrl("images/service1.png"),
-      title: "MRI Scan",
-      subTitle: "High-Definition, Noise-Free Imaging",
-      listData: {
-        "Fast Results": "Get your MRI results within hours.",
-        "Patient Comfort": "Silent and spacious machine for a stress-free scan.",
-        "High Accuracy": "Advanced imaging for precise diagnosis.",
-        "Helps In": "Detecting tumors, brain disorders, and spinal issues."
-      }
-    },
-    {
-      id: 2,
-      img: assetUrl("images/service2.png"),
-      title: "CT Scan",
-      subTitle: "Low Dose. High Resolution",
-      listData: {
-        "Fast Results": "Quick scans with minimal radiation exposure.",
-        "Patient Comfort": "Short scan times reduce discomfort.",
-        "High Accuracy": "Detailed cross-sectional images.",
-        "Helps In": "Detecting internal injuries and diseases."
-      }
-    },
-    {
-      id: 3,
-      img: assetUrl("images/service3.png"),
-      title: "Ultrasound",
-      subTitle: "Instant, High-Quality Diagnostics",
-      listData: {
-        "Fast Results": "Real-time imaging during the procedure.",
-        "Patient Comfort": "Non-invasive and painless process.",
-        "High Accuracy": "Clear visuals for accurate detection.",
-        "Helps In": "Monitoring pregnancy, diagnosing organ issues."
-      }
-    },
-    {
-      id: 4,
-      img: assetUrl("images/service1.png"),
-      title: "X-Ray",
-      subTitle: "High-Definition, Noise-Free Imaging",
-      listData: {
-        "Fast Results": "Images ready within minutes.",
-        "Patient Comfort": "Quick and simple positioning.",
-        "High Accuracy": "Crisp images for better diagnosis.",
-        "Helps In": "Detecting fractures, infections, and lung issues."
-      }
+  {
+    id: 1,
+    img: assetUrl("images/service1.png"),
+    title: "MRI Scan",
+    subTitle: "High-Definition, Noise-Free Imaging",
+    buttonText : "Book MRI Scan Now",
+    listData: {
+      "Fast Results": "Same-day reports with advanced 1.5T MRI.",
+      "Patient Comfort": "Noise-reduction technology with shorter scan times.",
+      "High Accuracy": "Detailed brain, spine, joint, and liver imaging with colour maps.",
+      "Helps In": "Brain, spine, soft-tissue, sports injuries, tumour screening."
     }
-  ];
+  },
+  {
+    id: 2,
+    img: assetUrl("images/service2.png"),
+    title: "CT Scan",
+    subTitle: "Low Dose, High Resolution",
+    buttonText : "Schedule CT Appointment",
+    listData: {
+      "Crystal-Clear Imaging": "Sub-millimetre slices with organ-specific precision.",
+      "Safe & Smart": "ASIR + organ dose modulation for lower radiation.",
+      "Quick Turnaround": "Rapid post-processing & cardiologist-reviewed reports.",
+      "Helps In": "Chest, cardiac, abdomen, trauma & full body scans."
+    }
+  },
+  {
+    id: 3,
+    img: assetUrl("images/service3.png"),
+    title: "Digital X-Ray",
+    subTitle: "Instant, High-Quality Diagnostics",
+    buttonText : "Book Digital X-Ray",
+    listData: {
+      "Instant Viewing": "Direct digital imaging with no film delay.",
+      "Accurate & Efficient": "Reduced retakes and enhanced clarity with Cesium Iodide detectors.",
+      "Patient Friendly": "Portable option available with low radiation dose.",
+      "Helps In": "Chest, bone, dental, and injury scans."
+    }
+  },
+  {
+    id: 4,
+    img: assetUrl("images/service4.png"),
+    title: "Portable Digital X-Ray",
+    subTitle: "Comfort Meets Convenience",
+    buttonText : "Book Home X-Ray Visit",
+    listData: {
+      "At-Home Service": "No travel needed for the patient.",
+      "Quick & Safe": "Mobility-enabled with fast turnaround.",
+      "Reliable Quality": "No compromise on image clarity.",
+      "Helps In": "Senior citizens, bedridden or post-surgical patients."
+    }
+  },
+  {
+    id: 5,
+    img: assetUrl("images/service5.png"),
+    title: "Ultrasound & Doppler",
+    subTitle: "Real-Time, Dynamic Imaging",
+    buttonText : "Book Ultrasound/Doppler",
+    listData: {
+      "Clarity in Motion": "4D ultrasound with advanced Doppler sensitivity.",
+      "Expert Analysis": "Female radiologists available on request.",
+      "Flexible Delivery": "Available at centre or via mobile units.",
+      "Helps In": "Pregnancy, abdomen, pelvis, vascular, thyroid."
+    }
+  },
+  {
+    id: 6,
+    img: assetUrl("images/service6.png"),
+    title: "Mammography",
+    subTitle: "Early Detection That Saves Lives",
+    buttonText : "Book Mammogram Screening",
+    listData: {
+      "Low-Dose Screening": "Digital mammogram for minimal exposure.",
+      "Fast Reports": "Same-day availability for peace of mind.",
+      "Women First": "Specialised care environment for women.",
+      "Helps In": "Women 40+, preventive care, breast health."
+    }
+  },
+  {
+    id: 7,
+    img: assetUrl("images/service6.png"),
+    title: "OPG (Dental X-Ray)",
+    subTitle: "Full Jaw View in One Go",
+    buttonText : "Book OPG Scan",
+    listData: {
+      "Panoramic Imaging": "Entire upper & lower jaw in one scan.",
+      "Dental Planning": "Detects impacted teeth, alignment, and growth.",
+      "Safe & Quick": "Non-invasive with instant output.",
+      "Helps In": "Comprehensive dental assessments."
+    }
+  }
+];
 
   return (
     <section id="services" className="md:pt-[200px] md:pb-[150px] md:text-left pt-[90px] pb-[90px] z-1 services relative">
@@ -156,7 +199,7 @@ export default function Services() {
                   <div className="content p-4">
                     <div className="upperData title mb-3">
                       <div className="font-semibold text-lg">{slide.title}</div>
-                      <div className="text-gray-500">{slide.subTitle}</div>
+                      <div className="text-gray-500 subTitle">{slide.subTitle}</div>
                     </div>
                     <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
                       {Object.entries(slide.listData).map(([key, value], idx) => (
@@ -166,7 +209,7 @@ export default function Services() {
                       ))}
                     </ul>
                     <a href="javascript:;" className="themeBtn text-center w-full block" data-title={slide.title} onClick={handleClick}>
-                      Book {slide.title} Now
+                      {slide.buttonText}
                     </a>
                   </div>
                 </div>

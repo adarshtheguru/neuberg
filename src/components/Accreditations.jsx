@@ -30,8 +30,8 @@ export default function Accreditations() {
             <div>
                 <p className="pb-4">Neuberg App on Play Store & iOS</p>
                 <div className="flex gap-2 xl:justify-start justify-center">
-                    <img src={assetUrl('images/appstore.svg')} alt="" />
-                    <img src={assetUrl('images/playstore.svg')} alt="" />
+                    <a href="https://apps.apple.com/in/app/neuberg-diagnostics-india/id1585628037"><img src={assetUrl('images/appstore.svg')} alt="" /></a>
+                    <a href="https://play.google.com/store/apps/details?id=com.neubergdiagnostics&hl=en"><img src={assetUrl('images/playstore.svg')} alt="" /></a>
                 </div>
             </div>
         </div>

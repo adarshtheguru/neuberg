@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { assetUrl } from "../utils/helpers";
 
 export default function Location() {
-  const [bgImage, setBgImage] = useState("");
+  const [bgImage, setBgImage] = useState("images/locationBgDesk.jpg");
 
   useEffect(() => {
     const updateBg = () => {
@@ -32,7 +32,7 @@ export default function Location() {
       <div className="xl:container mx-auto xl:px-4 xl:w-[80%] w-full h-full relative xl:grid items-center">
         {/* Content */}
         <div className="locData xl:w-[35%] w-full xl:px-0 xl:py-0 xl:pt-0 px-4 py-4 pt-[30px]">
-            <img src={assetUrl('images/logo.png')} alt="" />
+            <img src={assetUrl('images/logo.svg')} alt="" />
             <div className="addWrapper grid gap-4">
                 <p className="font-bold fadeBlack">Neuberg Diagnostics, Chennai</p>
                 <div className="flex gap-2">
@@ -48,7 +48,7 @@ export default function Location() {
                     <p>Customer Care - <a className="underline" href="tel:+919700369700"></a>+91 9700369700</p>
                 </div>
             </div>
-            <a href="javascript:;" className="block themeBtn mt-4 w-fit">Get Direction</a>
+            <a href="https://maps.app.goo.gl/AwUwXbd5XiYu5ZRF6" target="_blank" className="block themeBtn mt-4 w-fit">Get Direction</a>
         </div>
         <div className="block xl:hidden m-[-2px]">
           <img className="w-full" src={bgImage} alt="" />

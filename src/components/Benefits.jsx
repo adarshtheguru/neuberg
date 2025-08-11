@@ -44,8 +44,9 @@ export default function Benefits() {
             <div
               key={index}
               className={`box bg-white md:py-[30px] py-[15px] md:px-[35px] px-[15px] ${
-                index === 0 ? "xl:col-start-2" : ""
-              }`}
+                index === 0 ? "xl:col-start-2" : ""}
+                ${index === benefitsData.length - 1 ? "lg:col-span-1  lg:w-[100%] col-span-2 w-[50%] mx-auto" : ""}
+                `}
             >
               <img
                 className="md:pb-[40px] pb-[20px] mx-auto md:max-w-auto max-w-[45px]"

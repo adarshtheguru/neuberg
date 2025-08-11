@@ -81,6 +81,15 @@ header{
             gap: 30px;
             grid-template-columns: repeat(2, 1fr);
         }
+        img{
+            &:last-of-type{
+                @media ($max640) {
+                    width: 50%;
+                    grid-column: span 2;
+                    margin:  0 auto;
+                }
+            }
+        }
     }
     .detailWrap{
         display: grid;
@@ -107,7 +116,9 @@ header{
             border-radius: 12px;
             box-shadow: 5px 4px 17px 0px #0000001F;
             padding: 35px 50px;
-            display: flex;
+            display: grid;
+            grid-template-columns: auto auto;
+            align-items: center;
             gap: 0 50px;
             @media ($max640) {
                 gap: 0 10px;
@@ -158,8 +169,13 @@ header{
                         font-size: 24px;
                     }
                 }
+                .subTitle{
+                    min-height: 72px;
+                }
                     ul{
                         margin-bottom: 30px;
+                        height: 155px;
+                        overflow-y: scroll;
                         li{
                             margin-bottom: 5px;
                         }
