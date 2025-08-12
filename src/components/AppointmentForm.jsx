@@ -11,7 +11,7 @@ export function AppointmentForm() {
 
   const [errors, setErrors] = useState({});
 
-  const services = ["MRI Scan", "CT Scan", "Full Body Checkup", "X-Ray", "All Service"];
+  const services = ["MRI Scan", "CT Scan", "Digital X-ray", "Portable Digital X-Ray", "Ultrasound & Doppler", "Mammography", "OPG (Dental X-Ray)"];
 
   function handleChange(e) {
     const { name, value } = e.target;
