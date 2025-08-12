@@ -323,6 +323,18 @@ header{
     }
 }
 .location{
+    position: relative;
+    @media screen and ($min1280){
+        &:before{
+            background: linear-gradient(90deg, #EEECF4 50%, rgba(255, 255, 255, 0) 106.05%);
+            content: '';
+            height: 100%;
+            width: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
     .locData{
         @media ($max1024) {
             background-color: #F6EDFF;
