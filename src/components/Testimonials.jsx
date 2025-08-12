@@ -35,8 +35,13 @@ export default function Testimonials() {
 
         {/* Review Banner */}
         <img
-          className="mx-auto max-w-full mb-8"
+          className="mx-auto max-w-full mb-8 hidden sm:block"
           src={assetUrl("images/reviewDesk.svg")}
+          alt=""
+        />
+        <img
+          className="mx-auto max-w-full mb-8 block sm:hidden"
+          src={assetUrl("images/reviewMob.svg")}
           alt=""
         />
 

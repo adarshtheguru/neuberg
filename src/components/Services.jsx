@@ -52,7 +52,7 @@ export default function Services() {
     speed: 500,
     slidesToShow: slidesToShow,
     slidesToScroll: 1,
-    autoplay:true,
+    autoplay:false,
     autoplaySpeed: 3000,
   };
 

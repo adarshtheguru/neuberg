@@ -227,6 +227,25 @@ header{
                         margin-bottom: 30px;
                         min-height: 200px;
                         /*overflow-y: scroll;*/
+                        &.list-disc{
+                            list-style: none;
+                            li{
+                                padding-left: 20px;
+                                position: relative;
+                                &:before{
+                                    content: "";
+                                    width: 5px;
+                                    height: 5px;
+                                    left: 7px;
+                                    top: 7px;
+                                    font-size: 39px;
+                                     position: absolute; 
+                                     background-color: #343434;
+                                     border-radius: 100%;
+                                }
+
+                            }
+                        }
                         @media ($max992) {
                             min-height: 150px;
                         }
