@@ -30,12 +30,12 @@ export default function Benefits() {
       className="md:pt-[120px] md:pb-[100px] pt-[30px] pb-[60px] benefits relative"
     >
       <img
-        className="absolute bottom-0 left-0 hidden xl:block"
+        className="absolute bottom-0 left-0 hidden xl:block md:max-w-[450px]"
         src={assetUrl("images/person.png")}
         alt=""
       />
       <div className="container mx-auto px-4 relative">
-        <h2 className="secTitle xl:absolute left-0 top-[20px] xl:text-left text-center xl:pb-0 pb-[30px]">
+        <h2 className="secTitle xl:absolute left-0 top-[-10px] xl:text-left text-center xl:pb-0 pb-[30px]">
           Designed for Patients Who Value <br /> Accuracy, Speed & Comfort
         </h2>
 
@@ -49,7 +49,7 @@ export default function Benefits() {
                 `}
             >
               <img
-                className="md:pb-[40px] pb-[20px] mx-auto md:max-w-auto max-w-[45px]"
+                className="md:pb-[40px] pb-[20px] mx-auto md:max-w-auto max-h-[85px]"
                 src={assetUrl(benefit.img)}
                 alt=""
               />

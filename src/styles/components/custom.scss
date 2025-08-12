@@ -228,13 +228,16 @@ header{
         .box{
             border-radius: 12px;
             border: 1px solid #D0C9E3;
-            min-height: 237px;
+            min-height: 187px;
             @media ($max640) {
                 min-height: 167px;
             }
             .info{
                 font-size: 20px;
                 @media ($max640) {
+                    font-size: 14px;
+                }
+                @media ($max1440) and ($min993) {
                     font-size: 14px;
                 }
             }
