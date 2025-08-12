@@ -138,7 +138,7 @@ export default function Services() {
   },
   {
     id: 7,
-    img: assetUrl("images/service6.png"),
+    img: assetUrl("images/service7.png"),
     title: "OPG (Dental X-Ray)",
     subTitle: "Full Jaw View in One Go",
     buttonText : "Book OPG Scan",

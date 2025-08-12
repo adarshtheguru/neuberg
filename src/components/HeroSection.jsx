@@ -31,8 +31,8 @@ export default function HeroSection() {
           </div>
           {isLargeScreen && (
             <div className="mt-[60px] relative z-1 w-full max-w-[600px]">
-              <div className="absolute stamp z-2">
-                <img src={assetUrl("images/stamp.svg")} alt="" />
+              <div className="absolute stamp z-99">
+                <img className="stampImg" src={assetUrl("images/stamp.svg")} alt="" />
               </div>
               <AppointmentForm />
             </div>
@@ -41,19 +41,19 @@ export default function HeroSection() {
       </div>
       <div className="absolute bottom-0 right-0 bannerFloat imgResponsive lg:w-auto w-[85%]">
         <div className="relative">
-          <img className="xl:w-auto w-full" src={assetUrl("images/dhoni.png")} alt="" />
+          <img className="xl:w-auto w-full imgResponsiveMob" src={assetUrl("images/dhoni.png")} alt="" />
           {/* stamp.svg for sm → xl */}
             <img
               src={assetUrl("images/stamp.svg")}
               alt=""
-              className="hidden sm:block xl:hidden absolute top-[10px] left-[10px]"
+              className="hidden sm:block xl:hidden absolute top-[10px] left-[10px] stampImg"
             />
 
             {/* stampMob.svg for <sm */}
             <img
               src={assetUrl("images/stampMob.svg")}
               alt=""
-              className="block sm:hidden absolute top-[-5px]"
+              className="block sm:hidden absolute top-[-5px] stampImg"
             />
         </div>
       </div>

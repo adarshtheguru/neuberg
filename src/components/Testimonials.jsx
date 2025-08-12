@@ -14,21 +14,19 @@ export default function Testimonials() {
     "images/test3.png",
   ];
 
+  const mobimages = [
+    "images/test1.png",
+    "images/test2.png",
+    "images/test3.png",
+  ];
+
   const settings = {
     arrows: false,
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1, // Only 1 "layout" per slide
+    slidesToShow: 1,
     slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 768, // Mobile
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
   };
 
   return (
@@ -48,74 +46,61 @@ export default function Testimonials() {
           alt=""
         />
 
-        {/* Slider */}
-        <Slider {...settings}>
-          {/* Each slide will contain a special grid layout */}
-          {Array.from({ length: Math.ceil(images.length / 3) }).map((_, index) => {
-            const bigImage = images[index * 3];
-            const small1 = images[index * 3 + 1];
-            const small2 = images[index * 3 + 2];
+        {/* Desktop Slider */}
+        <div className="hidden md:block">
+          <Slider {...settings}>
+            {Array.from({ length: Math.ceil(images.length / 3) }).map((_, index) => {
+              const bigImage = images[index * 3];
+              const small1 = images[index * 3 + 1];
+              const small2 = images[index * 3 + 2];
 
-            return (
-              <div key={index} className="px-2">
-                {/* Desktop Grid Layout */}
-                <div className="hidden md:grid grid-cols-2 gap-2 h-[400px]">
-                  {/* Left Big Image */}
-                  <div className="w-full h-full">
-                    <img
-                      src={assetUrl(bigImage)}
-                      alt=""
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  </div>
-
-                  {/* Right Small Images */}
-                  <div className="grid grid-rows-2 gap-2 h-full">
-                    {small1 && (
+              return (
+                <div key={index} className="px-2">
+                  <div className="grid grid-cols-2 gap-2 h-[400px]">
+                    <div className="w-full h-full">
                       <img
-                        src={assetUrl(small1)}
+                        src={assetUrl(bigImage)}
                         alt=""
                         className="w-full h-full object-cover rounded-lg"
                       />
-                    )}
-                    {small2 && (
-                      <img
-                        src={assetUrl(small2)}
-                        alt=""
-                        className="w-full h-full object-cover rounded-lg"
-                      />
-                    )}
+                    </div>
+                    <div className="grid grid-rows-2 gap-2 h-full">
+                      {small1 && (
+                        <img
+                          src={assetUrl(small1)}
+                          alt=""
+                          className="w-full h-full object-cover rounded-lg"
+                        />
+                      )}
+                      {small2 && (
+                        <img
+                          src={assetUrl(small2)}
+                          alt=""
+                          className="w-full h-full object-cover rounded-lg"
+                        />
+                      )}
+                    </div>
                   </div>
                 </div>
+              );
+            })}
+          </Slider>
+        </div>
 
-                {/* Mobile Layout */}
-                <div className="md:hidden">
-                  {bigImage && (
-                    <img
-                      src={assetUrl(bigImage)}
-                      alt=""
-                      className="w-full mb-2 object-cover rounded-lg"
-                    />
-                  )}
-                  {small1 && (
-                    <img
-                      src={assetUrl(small1)}
-                      alt=""
-                      className="w-full mb-2 object-cover rounded-lg"
-                    />
-                  )}
-                  {small2 && (
-                    <img
-                      src={assetUrl(small2)}
-                      alt=""
-                      className="w-full object-cover rounded-lg"
-                    />
-                  )}
-                </div>
+        {/* Mobile Slider */}
+        <div className="md:hidden">
+          <Slider {...settings}>
+            {mobimages.map((img, idx) => (
+              <div key={idx} className="px-2">
+                <img
+                  src={assetUrl(img)}
+                  alt=""
+                  className="w-full object-cover rounded-lg aspect-3/2"
+                />
               </div>
-            );
-          })}
-        </Slider>
+            ))}
+          </Slider>
+        </div>
       </div>
     </section>
   );

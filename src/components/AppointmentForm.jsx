@@ -11,7 +11,7 @@ export function AppointmentForm() {
 
   const [errors, setErrors] = useState({});
 
-  const services = ["MRI Scan", "CT Scan", "Full Body Checkup", "X-Ray"];
+  const services = ["MRI Scan", "CT Scan", "Full Body Checkup", "X-Ray", "All Service"];
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -37,13 +37,13 @@ export function AppointmentForm() {
       newErrors.service = "Please select a service";
     }
 
-    if (!form.date) {
-      newErrors.date = "Please select a date";
-    }
+    // if (!form.date) {
+    //   newErrors.date = "Please select a date";
+    // }
 
-    if (!form.time) {
-      newErrors.time = "Please select a time";
-    }
+    // if (!form.time) {
+    //   newErrors.time = "Please select a time";
+    // }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -142,7 +142,7 @@ export function AppointmentForm() {
         </div>
 
         {/* Date & Time */}
-        <div className="grid grid-cols-5 gap-4">
+        {/* <div className="grid grid-cols-5 gap-4">
           <div className="col-span-3 relative">
             <label htmlFor="date">Date</label>
             <input
@@ -180,7 +180,7 @@ export function AppointmentForm() {
               </span>
             )}
           </div>
-        </div>
+        </div> */}
 
         <button
           type="submit"

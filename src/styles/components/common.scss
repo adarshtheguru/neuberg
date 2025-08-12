@@ -5,8 +5,14 @@ body, .inter{
     font-family: "Maven Pro", sans-serif;
 }
 .imgResponsive{
-    max-width: 100%;
+    max-width: 100% !important;
     height: auto;
+}
+.imgResponsiveMob{
+    @media ($max992) {
+        max-width: 100% !important;
+        height: auto;
+    }
 }
 .secTitle{
     font-family: "Maven Pro", sans-serif;
@@ -61,3 +67,41 @@ body, .inter{
         }
     }
 }
+
+.hidden-md {
+    display: block;
+	@media ($max1024) {
+        display: none !important;
+    }
+}
+	.visible-md{
+        display: none;
+		@media ($max1024) {
+            display: block !important;
+        }
+	}
+
+.hidden-sm {
+    display: block;
+	@media ($max992) {
+        display: none !important;
+    }
+}
+	.visible-sm {
+        display: none;
+		@media ($max992) {
+            display: block !important;
+        }
+	}
+.hidden-xs {
+    display: block;
+	@media ($max640) {
+        display: none !important;
+    }
+}
+	.visible-xs {
+        display: none;
+		@media ($max640) {
+            display: block !important;
+        }
+	}
