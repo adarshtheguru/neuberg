@@ -23,12 +23,12 @@ export default function HeroSection() {
           <div className="bannerPref capitalize pb-5 xl:font-semibold">
             Book Trusted MRI, CT & Full Body Scans
           </div>
-          <div className="capitalize xl:hidden font-bold bannerCity fadeBlack text-center">
-            in Chennai - From <br /> Anywhere.
+          <div className="capitalize font-bold bannerCity fadeBlack">
+            in Chennai - From Anywhere.
           </div>
-          <div className="bannerSvg hidden xl:block">
+       {/*   <div className="bannerSvg hidden xl:block">
             <img src={assetUrl("images/bannerTitle.svg")} alt="" />
-          </div>
+          </div>*/}
           {isLargeScreen && (
             <div className="mt-[60px] relative z-1 w-full max-w-[600px]">
               <div className="absolute stamp z-99">
