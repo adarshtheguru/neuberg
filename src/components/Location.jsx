@@ -26,7 +26,8 @@ export default function Location() {
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "right center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div className="xl:container mx-auto xl:px-4 xl:w-[80%] w-full h-full relative xl:grid items-center">

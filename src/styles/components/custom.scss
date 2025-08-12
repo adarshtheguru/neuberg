@@ -58,6 +58,7 @@ header{
             }
         }
         .stampImg{
+            filter: drop-shadow(10px 9px 24px rgba(0, 0, 0, 0.38));
             @media (max-width:1300px) {
                 max-width: 250px;
             }
@@ -73,6 +74,9 @@ header{
         width: 250px;
         top: -60px;
         right: -180px;
+        .stampImg{
+            filter: drop-shadow(10px 9px 24px rgba(0, 0, 0, 0.38));
+        }
     }
 }
 .whyNeuberg{
