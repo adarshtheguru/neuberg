@@ -25,6 +25,10 @@ body, .inter{
         line-height: 34px;
         font-weight: 600;
     }
+    @media ($max1440) and ($min993) {
+        font-size: 36px;
+        line-height: 46px;
+    }
 }
 .fadeBlack{
     color: #1C1C1C;

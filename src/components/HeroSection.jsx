@@ -21,7 +21,7 @@ export default function HeroSection() {
       <div className="container mx-auto px-4 grid xl:items-center items-start xl:text-left text-center">
         <div className="bannerCont xl:pt-0 md:pt-[50px]">
           <div className="bannerPref capitalize pb-5 xl:font-semibold">
-            Book Trusted MRI, CT & <br /> Full Body Scans
+            Book Trusted MRI, CT & Full Body Scans
           </div>
           <div className="capitalize xl:hidden font-bold bannerCity fadeBlack text-center">
             in Chennai - From <br /> Anywhere.

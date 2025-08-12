@@ -127,11 +127,11 @@ header{
             background-color: #fff;
             border-radius: 12px;
             box-shadow: 5px 4px 17px 0px #0000001F;
-            padding: 35px 50px;
+            padding: 35px 35px;
             display: grid;
             grid-template-columns: auto auto;
             align-items: center;
-            gap: 0 50px;
+            gap: 0 40px;
             @media ($max640) {
                 gap: 0 10px;
                 padding: 25px 18px;
@@ -160,6 +160,11 @@ header{
 .services{
     background-color: #FFF6EC;
     .servicesSliderWrapper{
+        z-index: 3;
+        position: relative;
+        .slick-arrow{
+            display: none!important;
+        }
         .slick-current{
             .box{
                 box-shadow: 5px 4px 17px 0px #0000001F;
@@ -182,12 +187,15 @@ header{
                     }
                 }
                 .subTitle{
-                    min-height: 72px;
+                    min-height: auto;
+                    @media ($max1440) and ($min993) {
+                        font-size: 20px;
+                    }
                 }
                     ul{
                         margin-bottom: 30px;
                         min-height: 200px;
-                        overflow-y: scroll;
+                        /*overflow-y: scroll;*/
                         @media ($max992) {
                             min-height: 150px;
                         }

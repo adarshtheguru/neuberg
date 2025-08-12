@@ -6,12 +6,6 @@ export default function Testimonials() {
     "images/test1.png",
     "images/test2.png",
     "images/test3.png",
-    "images/test1.png",
-    "images/test2.png",
-    "images/test3.png",
-    "images/test1.png",
-    "images/test2.png",
-    "images/test3.png",
   ];
 
   const mobimages = [
