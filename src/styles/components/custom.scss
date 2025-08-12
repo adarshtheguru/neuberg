@@ -219,6 +219,9 @@ header{
                     @media ($max1440) and ($min993) {
                         font-size: 20px;
                     }
+                     @media ($max640) {
+                        font-size: 18px;
+                     }
                 }
                     ul{
                         margin-bottom: 30px;
@@ -283,7 +286,8 @@ header{
         @media ($max640) {
             min-width: unset;
             min-height: unset;
-            padding: 8px 20px;
+            padding: 6px 20px;
+            font-size: 16px;
         }
         &.green{
             background: #1D902E;
@@ -315,10 +319,14 @@ header{
         .faqElement{
             border-radius: 12px;
             border: 1px solid #C8C1DB;
+            h3{
+                    width: calc(100% - 40px);
+                }
             .question{
                 background-color: #EEEDF5;
                 border-radius: 12px 12px 0 0;
                 font-weight: 600;
+
             }
         }
     }
