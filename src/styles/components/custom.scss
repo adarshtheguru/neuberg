@@ -43,6 +43,9 @@ header{
      @media ($max640) {
         min-height: calc(100vh - 7rem);
     }
+    @media ($max390) {
+        min-height: calc(100vh - 3rem);
+    }
     .bannerPref{
         font-family: Maven Pro;
         font-size: 40px;
