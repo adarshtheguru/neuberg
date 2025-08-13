@@ -49,7 +49,7 @@ export default function Benefits() {
                 `}
             >
               <img
-                className="md:pb-[40px] pb-[20px] mx-auto md:max-w-auto max-h-[85px]"
+                className="md:pb-[40px] pb-[20px] mx-auto md:max-w-auto max-h-[105px]"
                 src={assetUrl(benefit.img)}
                 alt=""
               />
