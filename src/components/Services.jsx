@@ -99,7 +99,7 @@ export default function Services() {
   },
   {
     id: 4,
-    img: assetUrl("images/service4.png"),
+    img: assetUrl("images/service7.png"),
     title: "Portable Digital X-Ray",
     subTitle: "Comfort Meets Convenience",
     buttonText : "Book Home X-Ray Visit",
@@ -112,7 +112,7 @@ export default function Services() {
   },
   {
     id: 5,
-    img: assetUrl("images/service5.png"),
+    img: assetUrl("images/service4.png"),
     title: "Ultrasound & Doppler",
     subTitle: "Real-Time, Dynamic Imaging",
     buttonText : "Book Ultrasound/Doppler",
@@ -125,7 +125,7 @@ export default function Services() {
   },
   {
     id: 6,
-    img: assetUrl("images/service6.png"),
+    img: assetUrl("images/service5.png"),
     title: "Mammography",
     subTitle: "Early Detection That Saves Lives",
     buttonText : "Book Mammogram Screening",
@@ -138,7 +138,7 @@ export default function Services() {
   },
   {
     id: 7,
-    img: assetUrl("images/service7.png"),
+    img: assetUrl("images/service6.png"),
     title: "OPG (Dental X-Ray)",
     subTitle: "Full Jaw View in One Go",
     buttonText : "Book OPG Scan",
