@@ -18,7 +18,7 @@ export default function Accreditations() {
                     Enquire Now
                     <img className="md:block hidden" src={assetUrl('images/whiteArrow.svg')} alt="" />
                 </a>
-                <a href="javascript:;" className="themeBtn green invisible">
+                <a href="javascript:;" className="themeBtn green invisible hidden-md">
                     <img src={assetUrl('images/wa.svg')} alt="" />
                     <div className="wa">
                         <p>WhatsApp</p>
