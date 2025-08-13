@@ -5,7 +5,7 @@ export default function Accreditations() {
         scrollToWithAnimation("home", 0, "", 1000);
       };
   return (
-    <section id="accreditations" className="md:pt-[150px] pt-[120px] accreditations relative grid">
+    <section id="accreditations" className="md:pt-[150px] pt-[50px] accreditations relative grid">
         <img className="xl:block hidden absolute bottom-0 left-0 max-w-[52%]" src={assetUrl('images/dhoniWithMan.png')} alt="" />
         <img className="xl:hidden bottom-0 left-0 w-full" src={assetUrl('images/dhonipersonipad.png')} alt="" />
         <div className="container mx-auto px-4 h-full text-white grid xl:justify-end xl:text-left text-center items-center xl:pb-[135px] gap-[30px] xl:order-none order-first md:pb-0 pb-4">
@@ -28,7 +28,7 @@ export default function Accreditations() {
                 </a>
             </div>
             <div>
-                <p className="pb-4">Neuberg App on Play Store & iOS</p>
+                <p className="pb-4">Neuberg App on</p>
                 <div className="flex gap-2 xl:justify-start justify-center">
                     <a href="https://apps.apple.com/in/app/neuberg-diagnostics-india/id1585628037"><img src={assetUrl('images/appstore.svg')} alt="" /></a>
                     <a href="https://play.google.com/store/apps/details?id=com.neubergdiagnostics&hl=en"><img src={assetUrl('images/playstore.svg')} alt="" /></a>

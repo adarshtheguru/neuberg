@@ -70,7 +70,7 @@ export function AppointmentForm() {
         <div className="l1">Radiology Scan Starting From</div>
         <div className="l2">Rs. 499/- Only</div>
       </div>
-      <h3 className="text-xl font-semibold mb-4 md:text-[32px] text-[22px]">Book An Appointment Now</h3>
+      <h3 className="text-xl font-semibold mb-4 md:text-[32px] text-[22px] xl:text-left text-center">Book An Appointment Now</h3>
 
       <div className="flex flex-col gap-6 pt-[100px]">
         {/* Name */}

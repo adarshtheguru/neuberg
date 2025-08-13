@@ -159,7 +159,7 @@ export default function Services() {
           Precision Scans. Proven Speed. <br className=" md:block hidden" /> Personalized Reporting.
         </h2>
         <div className="flex place-content-between">
-          <p className="fadeBlack font-medium">
+          <p className="fadeBlack font-medium xl:text-left text-center">
             Chennais top-rated radiology centre - trusted for fast, accurate
             diagnosis using the latest global technology.
           </p>

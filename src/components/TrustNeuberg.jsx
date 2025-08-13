@@ -17,7 +17,7 @@ export default function TrustNeuberg() {
       }, []);
 
   return (
-    <section id="why-neuberg" className="xl:pt-[80px] whyNeuberg relative">
+    <section id="why-neuberg" className="xl:pt-[70px] whyNeuberg relative">
         <img className="top-0 left-0 absolute w-fit" src={assetUrl("images/leftStar.png")} alt="" />
         <img className="bottom-10 right-0 absolute w-fit" src={assetUrl("images/rightStar.png")} alt="" />
         <div className="container mx-auto px-4">
@@ -28,14 +28,14 @@ export default function TrustNeuberg() {
                     </div>
                 )
             }
-            <div className="iconWrap">
+            <div className="text-center text-white secTitle pb-[40px]">Millions Trust Neuberg Diagnostics <br className="hidden-md" /> for Radiology & Pathology Test</div>
+            <div className="iconWrap pb-[60px]">
                 <img className="mx-auto" src={assetUrl('images/icon1.svg')} alt="" />
                 <img className="mx-auto" src={assetUrl('images/icon2.svg')} alt="" />
                 <img className="mx-auto" src={assetUrl('images/icon3.svg')} alt="" />
                 <img className="mx-auto" src={assetUrl('images/icon4.svg')} alt="" />
                 <img className="mx-auto" src={assetUrl('images/icon5.svg')} alt="" />
             </div>
-            <div className="text-center text-white secTitle pb-[60px] md:block hidden">Thousands Trust Neuberg for <br /> Radiology & Pathology</div>
             <div className="detailWrap relative z-2">
                 <div className="box">
                     <img src={assetUrl('images/ic.svg')} alt="" />

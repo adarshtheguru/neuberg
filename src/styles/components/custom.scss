@@ -122,14 +122,26 @@ header{
         }
         @media ($max640) {
             gap: 30px;
-            grid-template-columns: repeat(2, 1fr);
-        }
-        img{
-            &:last-of-type{
-                @media ($max640) {
-                    width: 50%;
+            grid-template-columns: repeat(6, 1fr);
+            justify-items: center; // Centers items in their column
+            align-items: center;
+
+            img {
+                aspect-ratio: 1 / 1; // Keeps equal width & height
+                width: 100%;         // Fills its grid span
+                object-fit: cover;
+
+                // First 3 images — first row
+                &:nth-of-type(-n+3) {
                     grid-column: span 2;
-                    margin:  0 auto;
+                }
+
+                // Last 2 images — second row centered
+                &:nth-of-type(4) {
+                    grid-column: 2 / span 2; // starts at col 2, spans 2 cols
+                }
+                &:nth-of-type(5) {
+                    grid-column: 4 / span 2; // starts at col 4, spans 2 cols
                 }
             }
         }
@@ -296,6 +308,11 @@ header{
 
 .accreditations{
     background-color: #261145;
+    .secTitle{
+        @media ($max640) {
+            font-size: 28px;
+        }
+    }
     .themeBtn{
         padding: 0 25px;
         min-width: 225px;
