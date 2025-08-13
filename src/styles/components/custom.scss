@@ -365,6 +365,38 @@ header{
         }
     }
 }
+.formBox{
+    .PriceBox{
+        position: absolute;
+        left: 0;
+        top: 70px;
+        padding: 8px 90px 10px 40px;
+        border-radius: 0 12px 12px 0;
+        background-color: #46226D;
+        font-weight: 600;
+        line-height: normal;
+        .l1{
+            font-size: 22px;
+            @media ($max640) {
+                font-size: 18px;
+            }
+        }
+        .l2{
+            font-size: 33px;
+            @media ($max640) {
+                font-size: 28px;
+            }
+        }
+        @media ($max1024) {
+            left: -15px;
+            box-shadow: 7px 7px 0px 0px #00000066;
+        }
+        @media ($max640) {
+            padding: 10px 20px 9px 37px;
+            top: 60px;
+        }
+    }
+}
 footer{
     background-color: #1A0B2A;
     @media ($max640) {

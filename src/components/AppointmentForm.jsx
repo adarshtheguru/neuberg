@@ -64,11 +64,15 @@ export function AppointmentForm() {
     <form
       id="formBox"
       onSubmit={handleSubmit}
-      className="w-full xl:max-w-[600px] bg-white rounded-[12px] shadow-md py-8 md:pl-[40px] md:pr-[60px] px-[10px] text-[#1C1C1C] text-[14px]"
+      className="formBox w-full xl:max-w-[600px] bg-white rounded-[12px] shadow-md pt-3 py-8 md:pl-[40px] md:pr-[60px] px-[10px] text-[#1C1C1C] text-[14px] relative"
     >
+      <div className="PriceBox md:pl-[40px] md:pr-[60px] px-[10px] mavenPro text-white">
+        <div className="l1">Radiology Scan Starting From</div>
+        <div className="l2">Rs. 499/- Only</div>
+      </div>
       <h3 className="text-xl font-semibold mb-4 md:text-[32px] text-[22px]">Book An Appointment Now</h3>
 
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 pt-[100px]">
         {/* Name */}
         <div className="relative">
           <label htmlFor="name">Name</label>

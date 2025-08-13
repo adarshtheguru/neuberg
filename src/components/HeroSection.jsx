@@ -30,7 +30,7 @@ export default function HeroSection() {
             <img src={assetUrl("images/bannerTitle.svg")} alt="" />
           </div>*/}
           {isLargeScreen && (
-            <div className="mt-[60px] relative z-1 w-full max-w-[600px]">
+            <div className="mt-[50px] relative z-1 w-full max-w-[600px]">
               {/* <div className="absolute stamp z-99">
                 <img className="stampImg" src={assetUrl("images/stamp.svg")} alt="" />
               </div> */}

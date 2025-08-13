@@ -23,7 +23,7 @@ export default function TrustNeuberg() {
         <div className="container mx-auto px-4">
             {
                 isSmallScreen && (
-                    <div className="mt-[-50px] pb-[50px]">
+                    <div className="mt-[-50px] pb-[50px] w-[90%] mx-auto">
                         <AppointmentForm />
                     </div>
                 )
