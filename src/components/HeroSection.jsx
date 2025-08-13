@@ -21,40 +21,32 @@ export default function HeroSection() {
       <div className="container mx-auto px-4 grid xl:items-center items-start xl:text-left text-center">
         <div className="bannerCont xl:pt-0 md:pt-[50px]">
           <div className="bannerPref capitalize pb-5 xl:font-semibold">
-            Book Trusted MRI, CT & Full Body Scans
+            From Nungambakkam to Neelankarai
           </div>
           <div className="capitalize font-bold bannerCity fadeBlack">
-            in Chennai - From Anywhere.
+            Chennai Trusts Neuberg <br className="visible-md" /> for <br className="hidden-md" /> Precision Scans.
           </div>
        {/*   <div className="bannerSvg hidden xl:block">
             <img src={assetUrl("images/bannerTitle.svg")} alt="" />
           </div>*/}
           {isLargeScreen && (
             <div className="mt-[60px] relative z-1 w-full max-w-[600px]">
-              <div className="absolute stamp z-99">
+              {/* <div className="absolute stamp z-99">
                 <img className="stampImg" src={assetUrl("images/stamp.svg")} alt="" />
-              </div>
+              </div> */}
               <AppointmentForm />
             </div>
           )}
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 bannerFloat imgResponsive lg:w-auto w-[85%]">
+      <div className="absolute bottom-0 right-0 bannerFloat hidden-md imgResponsive lg:w-auto w-[85%]">
         <div className="relative">
           <img className="xl:w-auto w-full imgResponsiveMob" src={assetUrl("images/dhoni.png")} alt="" />
-          {/* stamp.svg for sm → xl */}
-            <img
-              src={assetUrl("images/stamp.svg")}
-              alt=""
-              className="hidden sm:block xl:hidden absolute top-[10px] left-[10px] stampImg"
-            />
-
-            {/* stampMob.svg for <sm */}
-            <img
-              src={assetUrl("images/stampMob.svg")}
-              alt=""
-              className="block sm:hidden absolute top-[-5px] stampImg"
-            />
+        </div>
+      </div>
+      <div className="relative bottom-[-10px] left-[50%] translate-x-[-50%] visible-md w-full">
+        <div className="relative">
+          <img className="w-full" src={assetUrl("images/dhoniMob.png")} alt="" />
         </div>
       </div>
     </section>
