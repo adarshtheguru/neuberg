@@ -24,7 +24,7 @@ export default function HeroSection() {
             From Health checks to Advanced scans
           </div>
           <div className="capitalize font-bold bannerCity fadeBlack">
-            with Speed, Accuracy, <br className="visible-md" />and Trusted care.
+            with Speed, Accuracy, <br className="visible-md" />and <br className="hidden-md" /> Trusted care.
           </div>
        {/*   <div className="bannerSvg hidden xl:block">
             <img src={assetUrl("images/bannerTitle.svg")} alt="" />
