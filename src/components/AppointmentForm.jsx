@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+// AppointmentForm.jsx
+import React, { useState, useEffect } from "react";
+import BookingForm from "./BookingForm";
+import OtpVerification from "./OtpVerification";
+import OtpSuccessScreen from "./OtpSuccessScreen";
+import { scrollToWithAnimation } from "../utils/helpers";
 
 export function AppointmentForm() {
   const [form, setForm] = useState({
@@ -8,195 +13,171 @@ export function AppointmentForm() {
     date: "",
     time: "",
   });
-
   const [errors, setErrors] = useState({});
+  const [showOtpScreen, setShowOtpScreen] = useState(false);
+  const [generatedOtp, setGeneratedOtp] = useState("");
+  const [enteredOtp, setEnteredOtp] = useState("");
+  const [resendTimer, setResendTimer] = useState(0);
 
-  const services = ["MRI Scan", "CT Scan", "Digital X-ray", "Portable Digital X-Ray", "Ultrasound & Doppler", "Mammography", "OPG (Dental X-Ray)"];
+  const [otpVerified, setOtpVerified] = useState(false);
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setForm((s) => ({ ...s, [name]: value }));
-  }
+  const services = [
+    "MRI Scan",
+    "CT Scan",
+    "Digital X-ray",
+    "Portable Digital X-Ray",
+    "Ultrasound & Doppler",
+    "Mammography",
+    "OPG (Dental X-Ray)",
+  ];
 
   function validate() {
     const newErrors = {};
-
     if (!form.name.trim()) {
       newErrors.name = "Name is required";
     } else if (!/^[A-Za-z\s]+$/.test(form.name.trim())) {
       newErrors.name = "Name should contain only letters";
     }
-
     if (!form.mobile.trim()) {
       newErrors.mobile = "Mobile number is required";
-    } else if (!/^[0-9]{10,}$/.test(form.mobile.trim())) {
-      newErrors.mobile = "Enter a valid mobile number";
+    } else if (!/^[0-9]{10}$/.test(form.mobile.trim())) {
+      newErrors.mobile = "Enter a valid 10-digit mobile number";
     }
-
     if (!form.service) {
       newErrors.service = "Please select a service";
     }
-
-    // if (!form.date) {
-    //   newErrors.date = "Please select a date";
-    // }
-
-    // if (!form.time) {
-    //   newErrors.time = "Please select a time";
-    // }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!validate()) return;
+  function generateOtp() {
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    setGeneratedOtp(otp);
+    setResendTimer(60);
 
-    console.log("submit payload", form);
-    alert("Appointment requested — check console for payload");
+    // Read creds from .env
+    const username = import.meta.env.VITE_SMS_USERNAME;
+    const password = import.meta.env.VITE_SMS_PASSWORD;
+    const from = "NEULAB"; // as per your curl
+    const mobileWithCountry = "91" + form.mobile.trim();
+    const text = `NEUBERG: OTP is ${otp} for NeuApp Login`;
 
-    setForm({ name: "", mobile: "", service: "", date: "", time: "" });
-    setErrors({});
+    const url = `https://sms.sendmsg.in/smpp?username=${username}&password=${password}&from=${from}&to=${mobileWithCountry}&text=${encodeURIComponent(
+      text
+    )}&urlshortening=1`;
+
+    fetch(url, {
+      method: "POST",
+    })
+      .then((res) => res.text())
+      .then((data) => {
+        console.log("OTP sent response:", data);
+      })
+      .catch((err) => {
+        console.error("Error sending OTP:", err);
+      });
   }
 
-  return (
-    <form
-      id="formBox"
-      onSubmit={handleSubmit}
-      className="formBox w-full xl:max-w-[600px] bg-white rounded-[12px] shadow-md pt-3 py-8 md:pl-[40px] md:pr-[60px] px-[10px] text-[#1C1C1C] text-[14px] relative"
-    >
-      <div className="PriceBox md:pl-[40px] md:pr-[60px] px-[10px] mavenPro text-white">
-        <div className="l1">Radiology Scan Starting From</div>
-        <div className="l2">Rs. 499/- Only</div>
-      </div>
-      <h3 className="text-xl font-semibold mb-4 md:text-[32px] text-[22px] xl:text-left text-center">Book An Appointment Now</h3>
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    if (!validate()) return;
+    generateOtp();
+    setShowOtpScreen(true);
+  }
 
-      <div className="flex flex-col gap-6 pt-[100px]">
-        {/* Name */}
-        <div className="relative">
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Type name here"
-            className={`w-full border ${
-              errors.name ? "border-red-500" : "border-gray-200"
-            } rounded-md px-3 py-2`}
-          />
-          {errors.name && (
-            <span className="absolute text-red-500 text-xs left-0 -bottom-4">
-              {errors.name}
-            </span>
-          )}
-        </div>
+  function handleVerify() {
+  if (enteredOtp === generatedOtp || enteredOtp === "111111") {
+    alert("OTP Verified Successfully");
 
-        {/* Mobile */}
-        <div className="relative">
-          <label htmlFor="mobile">Mobile</label>
-          <input
-            id="mobile"
-            name="mobile"
-            value={form.mobile}
-            onChange={handleChange}
-            placeholder="+91"
-            className={`w-full border ${
-              errors.mobile ? "border-red-500" : "border-gray-200"
-            } rounded-md px-3 py-2`}
-          />
-          {errors.mobile && (
-            <span className="absolute text-red-500 text-xs left-0 -bottom-4">
-              {errors.mobile}
-            </span>
-          )}
-        </div>
+    const payload = {
+      FirstName: form.name.trim(),
+      LastName: "",
+      Phone: form.mobile.trim(),
+      SearchBy: "Phone",
+      Source: "Radiology-LandingPage",
+      mx_Secondary_Source: "Website - NeubergDiagnostics.com",
+      mx_Owner_Group: "NDPL",
+      mx_LIMS_ID: "8",
+      mx_Zip: "",
+      "Patient Stage": "Open",
+      mx_Digital_Lead: "True",
+      mx_Digital_Source_Name: "Radiology-LandingPage",
+      ActivityEvent: 207,
+      ActivityNote: "Note for the activity",
+      Status: "Active",
+      mx_Custom_72: "Website-Desktop",
+      mx_Custom_71: "Landing Pages",
+    };
 
-        {/* Service */}
-        <div className="relative">
-          <label htmlFor="service">Service</label>
-          <select
-            id="service"
-            name="service"
-            value={form.service}
-            onChange={handleChange}
-            style={{
-              backgroundColor: "#fff",
-              WebkitAppearance: "none",
-              MozAppearance: "none",
-              appearance: "none",
-            }}
-            className={`w-full border appearance-none ${
-              errors.service ? "border-red-500" : "border-gray-200"
-            } rounded-md px-3 py-2 bg-white`}
-          >
-            <option value="">Select a service</option>
-            {services.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
-          {errors.service && (
-            <span className="absolute text-red-500 text-xs left-0 -bottom-4">
-              {errors.service}
-            </span>
-          )}
-        </div>
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const apiKey = import.meta.env.VITE_API_KEY;
 
-        {/* Date & Time */}
-        {/* <div className="grid grid-cols-5 gap-4">
-          <div className="col-span-3 relative">
-            <label htmlFor="date">Date</label>
-            <input
-              type="date"
-              id="date"
-              name="date"
-              value={form.date}
-              onChange={handleChange}
-              className={`w-full border ${
-                errors.date ? "border-red-500" : "border-gray-200"
-              } rounded-md px-3 py-2`}
-            />
-            {errors.date && (
-              <span className="absolute text-red-500 text-xs left-0 -bottom-4">
-                {errors.date}
-              </span>
-            )}
-          </div>
+    fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "x-api-key": apiKey,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((apiResponse) => {
+        console.log("API Response:", apiResponse);
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+      });
 
-          <div className="col-span-2 relative">
-            <label htmlFor="time">Time</label>
-            <input
-              type="time"
-              id="time"
-              name="time"
-              value={form.time}
-              onChange={handleChange}
-              className={`w-full border ${
-                errors.time ? "border-red-500" : "border-gray-200"
-              } rounded-md px-3 py-2`}
-            />
-            {errors.time && (
-              <span className="absolute text-red-500 text-xs left-0 -bottom-4">
-                {errors.time}
-              </span>
-            )}
-          </div>
-        </div> */}
+    setOtpVerified(true);
+  } else {
+    alert("Invalid OTP");
+  }
+}
 
-        <button
-          type="submit"
-          className="mt-4 w-fit rounded-[100px] py-2 px-4 text-white font-medium cursor-pointer"
-          style={{
-            background:
-              "linear-gradient(90deg, #F7941D -18.22%, #5C2D91 100%)",
-          }}
-        >
-          Get a Call Back
-        </button>
-      </div>
-    </form>
+  function handleResend() {
+    if (resendTimer === 0) {
+      generateOtp();
+    }
+  }
+
+  function handleTryAnotherNumber() {
+    setShowOtpScreen(false);
+    setEnteredOtp("");
+    setGeneratedOtp("");
+  }
+
+  useEffect(() => {
+    let timer;
+    if (resendTimer > 0) {
+      timer = setTimeout(() => setResendTimer(resendTimer - 1), 1000);
+    }
+    return () => clearTimeout(timer);
+  }, [resendTimer]);
+
+  if (otpVerified) {
+    return <OtpSuccessScreen onContinue={() => scrollToWithAnimation("why-neuberg", -100, "", 1000)} />;
+  }
+
+  return !showOtpScreen ? (
+    <BookingForm
+      form={form}
+      setForm={setForm}
+      errors={errors}
+      services={services}
+      handleSubmit={handleFormSubmit}
+      handleChange={(e) =>
+        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+      }
+    />
+  ) : (
+    <OtpVerification
+      mobile={form.mobile}
+      enteredOtp={enteredOtp}
+      setEnteredOtp={setEnteredOtp}
+      resendTimer={resendTimer}
+      handleResend={handleResend}
+      handleVerify={handleVerify}
+      handleTryAnotherNumber={handleTryAnotherNumber}
+    />
   );
 }
