@@ -21,7 +21,7 @@ export default function HeroSection() {
       <div className="container mx-auto px-4 grid xl:items-center items-start xl:text-left text-center">
         <div className="bannerCont xl:pt-0 md:pt-[50px]">
           <div className="capitalize font-bold bannerCity fadeBlack">
-            From Health checks <br>to Advanced scans
+            From Health checks <br> to Advanced scans
           </div>
           <div className="bannerPref capitalize pb-5 xl:font-semibold">
             with Speed, Accuracy, and Trusted care.
