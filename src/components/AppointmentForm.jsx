@@ -194,7 +194,7 @@ export function AppointmentForm() {
               "linear-gradient(90deg, #F7941D -18.22%, #5C2D91 100%)",
           }}
         >
-          Book An Appointment
+          Get a Call Back
         </button>
       </div>
     </form>

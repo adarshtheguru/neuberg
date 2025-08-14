@@ -21,10 +21,10 @@ export default function HeroSection() {
       <div className="container mx-auto px-4 grid xl:items-center items-start xl:text-left text-center">
         <div className="bannerCont xl:pt-0 md:pt-[50px]">
           <div className="bannerPref capitalize pb-5 xl:font-semibold">
-            From Nungambakkam to Neelankarai
+            From Health checks to Advanced scans
           </div>
           <div className="capitalize font-bold bannerCity fadeBlack">
-            Chennai Trusts Neuberg <br className="visible-md" /> for <br className="hidden-md" /> Precision Scans.
+            with Speed, Accuracy, <br className="visible-md" />and Trusted care.
           </div>
        {/*   <div className="bannerSvg hidden xl:block">
             <img src={assetUrl("images/bannerTitle.svg")} alt="" />
