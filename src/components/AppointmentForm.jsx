@@ -1,35 +1,20 @@
-// AppointmentForm.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import BookingForm from "./BookingForm";
 import OtpVerification from "./OtpVerification";
 import OtpSuccessScreen from "./OtpSuccessScreen";
 import { scrollToWithAnimation } from "../utils/helpers";
 
 export function AppointmentForm() {
-  const [form, setForm] = useState({
-    name: "",
-    mobile: "",
-    service: "",
-    date: "",
-    time: "",
-  });
+  const [form, setForm] = useState({ name: "", mobile: "", service: "", date: "", time: "" });
   const [errors, setErrors] = useState({});
   const [showOtpScreen, setShowOtpScreen] = useState(false);
   const [generatedOtp, setGeneratedOtp] = useState("");
   const [enteredOtp, setEnteredOtp] = useState("");
   const [resendTimer, setResendTimer] = useState(0);
-
   const [otpVerified, setOtpVerified] = useState(false);
+  const cardRef = useRef(null);
 
-  const services = [
-    "MRI Scan",
-    "CT Scan",
-    "Digital X-ray",
-    "Portable Digital X-Ray",
-    "Ultrasound & Doppler",
-    "Mammography",
-    "OPG (Dental X-Ray)",
-  ];
+  const services = ["MRI Scan", "CT Scan", "Digital X-ray", "Portable Digital X-Ray", "Ultrasound & Doppler", "Mammography", "OPG (Dental X-Ray)"];
 
   function validate() {
     const newErrors = {};
@@ -55,27 +40,18 @@ export function AppointmentForm() {
     setGeneratedOtp(otp);
     setResendTimer(60);
 
-    // Read creds from .env
     const username = import.meta.env.VITE_SMS_USERNAME;
     const password = import.meta.env.VITE_SMS_PASSWORD;
-    const from = "NEULAB"; // as per your curl
+    const from = "NEULAB";
     const mobileWithCountry = "91" + form.mobile.trim();
     const text = `NEUBERG: OTP is ${otp} for NeuApp Login`;
 
-    const url = `https://sms.sendmsg.in/smpp?username=${username}&password=${password}&from=${from}&to=${mobileWithCountry}&text=${encodeURIComponent(
-      text
-    )}&urlshortening=1`;
+    const url = `https://sms.sendmsg.in/smpp?username=${username}&password=${password}&from=${from}&to=${mobileWithCountry}&text=${encodeURIComponent(text)}&urlshortening=1`;
 
-    fetch(url, {
-      method: "POST",
-    })
+    fetch(url, { method: "POST" })
       .then((res) => res.text())
-      .then((data) => {
-        console.log("OTP sent response:", data);
-      })
-      .catch((err) => {
-        console.error("Error sending OTP:", err);
-      });
+      .then((data) => console.log("OTP sent response:", data))
+      .catch((err) => console.error("Error sending OTP:", err));
   }
 
   function handleFormSubmit(e) {
@@ -85,54 +61,55 @@ export function AppointmentForm() {
     setShowOtpScreen(true);
   }
 
-  function handleVerify() {
-  if (enteredOtp === generatedOtp || enteredOtp === "111111") {
-    alert("OTP Verified Successfully");
-
-    const payload = {
-      FirstName: form.name.trim(),
-      LastName: "",
-      Phone: form.mobile.trim(),
-      SearchBy: "Phone",
-      Source: "Radiology-LandingPage",
-      mx_Secondary_Source: "Website - NeubergDiagnostics.com",
-      mx_Owner_Group: "NDPL",
-      mx_LIMS_ID: "8",
-      mx_Zip: "",
-      "Patient Stage": "Open",
-      mx_Digital_Lead: "True",
-      mx_Digital_Source_Name: "Radiology-LandingPage",
-      ActivityEvent: 207,
-      ActivityNote: "Note for the activity",
-      Status: "Active",
-      mx_Custom_72: "Website-Desktop",
-      mx_Custom_71: "Landing Pages",
-    };
-
-    const apiUrl = import.meta.env.VITE_API_URL;
-    const apiKey = import.meta.env.VITE_API_KEY;
-
-    fetch(apiUrl, {
-      method: "POST",
-      headers: {
-        "x-api-key": apiKey,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    })
-      .then((res) => res.json())
-      .then((apiResponse) => {
-        console.log("API Response:", apiResponse);
-      })
-      .catch((err) => {
-        console.error("Error:", err);
-      });
-
-    setOtpVerified(true);
-  } else {
-    alert("Invalid OTP");
+  function triggerAnimation(type) {
+    if (cardRef.current) {
+      cardRef.current.classList.remove("shake", "flash"); // reset if already present
+      void cardRef.current.offsetWidth; // reflow to restart animation
+      cardRef.current.classList.add(type);
+    }
   }
-}
+
+  function handleVerify() {
+    if (enteredOtp === generatedOtp) {
+      triggerAnimation("flash");
+
+      const payload = {
+        FirstName: form.name.trim(),
+        LastName: "",
+        Phone: form.mobile.trim(),
+        SearchBy: "Phone",
+        Source: "Radiology-LandingPage",
+        mx_Secondary_Source: "Website - NeubergDiagnostics.com",
+        mx_Owner_Group: "NDPL",
+        mx_LIMS_ID: "8",
+        mx_Zip: "",
+        "Patient Stage": "Open",
+        mx_Digital_Lead: "True",
+        mx_Digital_Source_Name: "Radiology-LandingPage",
+        ActivityEvent: 207,
+        ActivityNote: "Note for the activity",
+        Status: "Active",
+        mx_Custom_72: "Website-Desktop",
+        mx_Custom_71: "Landing Pages",
+      };
+
+      fetch(import.meta.env.VITE_API_URL, {
+        method: "POST",
+        headers: {
+          "x-api-key": import.meta.env.VITE_API_KEY,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      })
+        .then((res) => res.json())
+        .then((apiResponse) => console.log("API Response:", apiResponse))
+        .catch((err) => console.error("Error:", err));
+
+      setTimeout(() => setOtpVerified(true), 400); // wait for flash animation
+    } else {
+      triggerAnimation("shake");
+    }
+  }
 
   function handleResend() {
     if (resendTimer === 0) {
@@ -155,29 +132,35 @@ export function AppointmentForm() {
   }, [resendTimer]);
 
   if (otpVerified) {
-    return <OtpSuccessScreen onContinue={() => scrollToWithAnimation("why-neuberg", -100, "", 1000)} />;
+    return (
+      <div ref={cardRef}>
+        <OtpSuccessScreen onContinue={() => scrollToWithAnimation("why-neuberg", -100, "", 1000)} />
+      </div>
+    );
   }
 
-  return !showOtpScreen ? (
-    <BookingForm
-      form={form}
-      setForm={setForm}
-      errors={errors}
-      services={services}
-      handleSubmit={handleFormSubmit}
-      handleChange={(e) =>
-        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-      }
-    />
-  ) : (
-    <OtpVerification
-      mobile={form.mobile}
-      enteredOtp={enteredOtp}
-      setEnteredOtp={setEnteredOtp}
-      resendTimer={resendTimer}
-      handleResend={handleResend}
-      handleVerify={handleVerify}
-      handleTryAnotherNumber={handleTryAnotherNumber}
-    />
+  return (
+    <div ref={cardRef}>
+      {!showOtpScreen ? (
+        <BookingForm
+          form={form}
+          setForm={setForm}
+          errors={errors}
+          services={services}
+          handleSubmit={handleFormSubmit}
+          handleChange={(e) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))}
+        />
+      ) : (
+        <OtpVerification
+          mobile={form.mobile}
+          enteredOtp={enteredOtp}
+          setEnteredOtp={setEnteredOtp}
+          resendTimer={resendTimer}
+          handleResend={handleResend}
+          handleVerify={handleVerify}
+          handleTryAnotherNumber={handleTryAnotherNumber}
+        />
+      )}
+    </div>
   );
 }
