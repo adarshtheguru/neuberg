@@ -94,7 +94,9 @@ export default function Testimonials() {
                 <img
                   src={assetUrl(img)}
                   alt=""
-                  className="w-full object-cover rounded-lg aspect-4/3"
+                  className={`w-full rounded-lg aspect-4/3 ${
+                    idx === 0 ? "object-contain" : "object-cover"
+                  }`}
                 />
               </div>
             ))}
