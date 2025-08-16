@@ -55,7 +55,7 @@ export default function Testimonials() {
 
               return (
                 <div key={index} className="px-2">
-                  <div className="grid grid-cols-2 gap-2 h-[400px]">
+                  <div className="grid grid-cols-2 gap-2 h-[400px] Databox">
                     <div className="w-full h-full">
                       <img
                         src={assetUrl(bigImage)}
@@ -94,7 +94,7 @@ export default function Testimonials() {
                 <img
                   src={assetUrl(img)}
                   alt=""
-                  className="w-full object-cover rounded-lg aspect-3/2"
+                  className="w-full object-cover rounded-lg aspect-4/3"
                 />
               </div>
             ))}

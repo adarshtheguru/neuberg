@@ -204,6 +204,19 @@ header{
         }
     }
 }
+.testimonials{
+    .Databox{
+        grid-template-columns: repeat(7, 1fr);
+        >div{
+            &:first-of-type{
+                grid-column: span 4;
+            }
+            &:last-of-type{
+                grid-column: span 3;
+            }
+        }
+    }
+}
 .services{
     background-color: #FFF6EC;
     .servicesSliderWrapper{
